@@ -1,0 +1,25 @@
+{
+  "name": "who-join",
+  "version": "1.0.0",
+  "description": "Discord detect user who join vc and callout with TTS",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "start:dev": "ts-node-dev src/index.ts",
+    "start:prod": "node dist/index.ts",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "dotenv": "^16.0.0",
+    "eslint": "^6.8.0",
+    "ts-node": "^10.5.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "glob": "^7.2.0"
+  }
+}
