@@ -4,7 +4,6 @@ import glob from 'glob'
 import { promisify } from 'util'
 import { RegisterCommandsOptions } from '../typings/Client'
 import { Event } from './Event'
-import { client } from '..'
 
 const globPromise = promisify(glob)
 
@@ -60,28 +59,6 @@ export class ExtendedClient extends Client {
     eventFiles.forEach(async (filePath) => {
       const event: Event<keyof ClientEvents> = await this.importFile(filePath)
       this.on(event.event, event.run)
-    })
-
-    this.on('voiceStateUpdate', (oldVoiceState, newVoiceState) => {
-      if (
-        newVoiceState.selfMute ||
-        newVoiceState.selfDeaf ||
-        oldVoiceState.selfMute ||
-        oldVoiceState.selfDeaf ||
-        newVoiceState.serverMute ||
-        newVoiceState.serverDeaf ||
-        oldVoiceState.serverMute ||
-        oldVoiceState.serverDeaf
-      )
-        return
-
-      if (newVoiceState.channel) {
-        // The member connected to a channel.
-        console.log(`${newVoiceState.member.user.tag} connected to ${newVoiceState.channel.name}.`)
-      } else if (oldVoiceState.channel) {
-        // The member disconnected from a channel.
-        console.log(`${oldVoiceState.member.user.tag} disconnected from ${oldVoiceState.channel.name}.`)
-      }
     })
   }
 }
