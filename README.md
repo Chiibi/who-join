@@ -1,2 +1,3 @@
 # who-join
-Discord bot detect user join/leave with TTS their name
+
+Discord bot detect user join/leave and announce their name with TTS.
